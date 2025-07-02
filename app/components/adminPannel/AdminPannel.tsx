@@ -195,7 +195,7 @@ function AdminPanel() {
         inTheBox: parseInTheBox(formData.inTheBox),
       };
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/elektroniks`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/electroniks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
