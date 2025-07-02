@@ -32,7 +32,7 @@ export default function Header() {
     const token = Cookies.get("token");
     if (!token) return;
 
-    fetch("http://localhost:3001/auth/current-user", {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/current-user`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

@@ -35,8 +35,8 @@ export default function ProductPageClient({
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState(false);
   const [x, setX] = useState(1);
-  useEffect(() => {
-    fetch(`http://localhost:3001/electroniks/${productId}`)
+  useEffect(() => {`${process.env.NEXT_PUBLIC_SERVER_URL}/electroniks/${productId}`
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/electroniks/${productId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch product");
 

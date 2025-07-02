@@ -33,7 +33,7 @@ export default function Suggestions() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3001/electroniks")
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/electroniks`)
       .then((res) => res.json())
       .then((data: Product[]) => {
         setProducts(data);

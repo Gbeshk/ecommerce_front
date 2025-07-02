@@ -67,7 +67,7 @@ function SignUpClient() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`http://localhost:3001/auth/sign-up`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

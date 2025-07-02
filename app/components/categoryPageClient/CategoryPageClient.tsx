@@ -29,7 +29,7 @@ export default function CategoryPageClient({ category }: { category: string }) {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http://localhost:3001/electroniks")
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/electroniks`)
       .then((res) => res.json())
       .then((data: ElectronikItem[]) => {
         const filtered = data.filter((item) => item.category === category);
