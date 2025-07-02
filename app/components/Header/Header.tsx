@@ -1,9 +1,10 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Cart from "../cart/Cart";
 import { useCart } from "../CartProvider/CartProvider";
 import Cookies from "js-cookie";
+import Image from "next/image";
 
 interface User {
   _id: string;
@@ -20,6 +21,7 @@ export default function Header() {
   const [cartShow, setCartShow] = useState(false);
   const { cartArray } = useCart();
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
   const [authState, setAuthState] = useState({
     isLoggedIn: false,
     isAdmin: false,
@@ -52,22 +54,32 @@ export default function Header() {
 
   const handleLogout = () => {
     Cookies.remove("token");
+    localStorage.removeItem("isLoggedIn");
     setAuthState({ isLoggedIn: false, isAdmin: false });
     router.push("/");
   };
 
-  // Use standard img tags instead of Next.js Image component
   const Logo = () => (
-    <img
+    <Image
+      width={10}
+      height={10}
       src="/images/logo.svg"
       alt="logo"
       className="w-[143px] h-[25px] cursor-pointer"
-      onClick={() => router.push("/")}
+      onClick={() => {
+        if (pathname === "/") {
+          window.location.reload();
+        } else {
+          router.push("/");
+        }
+      }}
     />
   );
 
   const CartIconImg = () => (
-    <img
+    <Image
+      width={10}
+      height={10}
       src="/images/cart-icon.svg"
       alt="cart icon"
       className="w-[24px] h-[20px] cursor-pointer"
@@ -75,7 +87,6 @@ export default function Header() {
     />
   );
 
-  // Render simplified version during SSR
   if (!mounted) {
     return (
       <div className="w-full bg-[#0E0E0E] h-[98px] p-1 pb-[24px]">

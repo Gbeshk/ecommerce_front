@@ -1,11 +1,13 @@
 import ProductPageClient from "@/app/components/productPageClient/ProductPageClient";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     product: string;
-  };
+  }>; // Changed: params is now a Promise
 }
 
-export default function page({ params }: PageProps) {
-  return <ProductPageClient productId={params.product} />;
+export default async function page({ params }: PageProps) {
+  const { product } = await params; // Changed: await the params Promise
+
+  return <ProductPageClient productId={product} />;
 }

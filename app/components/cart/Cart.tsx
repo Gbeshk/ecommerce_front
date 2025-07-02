@@ -141,7 +141,13 @@ export default function Cart({ cartShow, setCartShow }: ICart) {
             tabIndex={0}
             onClick={() => {
               setCartShow(false);
-              router.push("/checkout");
+              const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+              if (isLoggedIn === "yes") {
+                router.push("/checkout");
+              } else {
+                router.push("/sign-in");
+              }
             }}
             className="transition-all duration-300 hover:bg-[#FBAF85] cursor-pointer mt-6 w-[313px] h-[48px] bg-[#D87D4A] flex items-center justify-center font-manrope font-bold text-[13px] leading-[100%] tracking-[1px] text-center uppercase text-white select-none"
           >

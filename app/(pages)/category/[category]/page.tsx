@@ -4,11 +4,10 @@ import React from "react";
 export default async function Page({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const { category } =  params;
+  const { category } = await params;
   console.log(category);
-  
 
   return (
     <div>

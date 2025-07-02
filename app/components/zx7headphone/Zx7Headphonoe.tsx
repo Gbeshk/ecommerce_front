@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Zx7 from "../../../public/images/headphonezx7.jpg";
 import Image from "next/image";
@@ -8,13 +8,7 @@ function Zx7Headphonoe() {
   const router = useRouter();
   return (
     <div className="relative w-full max-w-[1110px] h-[320px] mx-auto mt-[44px] rounded-lg overflow-hidden">
-      <Image
-        src={Zx7}
-        alt="zx7"
-        layout="fill"
-        objectFit="cover"
-        className="rounded-lg"
-      />
+      <Image src={Zx7} alt="zx7" className="rounded-lg object-cover" />
       <div className="flex absolute left-24 top-[100px]  gap-5 flex-col">
         <p className="font-bold text-[28px] leading-[100%] tracking-[2px] uppercase">
           ZX7 SPEAKER

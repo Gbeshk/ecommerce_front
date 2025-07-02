@@ -98,12 +98,12 @@ function AdminPanel() {
       const match = line.match(/^(\d+)x?\s*(.+)$/);
       if (match) {
         return {
-          quantity: match[1],
+          quantity: `${match[1]}x`,
           item: match[2].trim(),
         };
       } else {
         return {
-          quantity: "1",
+          quantity: "1x",
           item: line.trim(),
         };
       }
@@ -212,7 +212,7 @@ function AdminPanel() {
       const result = await response.json();
       console.log("Success response:", result);
       alert("Product added successfully!");
-
+      router.push(`/categories/${formData.category}`);
       setFormData({
         name: "",
         category: "",

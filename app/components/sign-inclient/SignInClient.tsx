@@ -73,6 +73,7 @@ function SignInClient() {
           secure: true,
           sameSite: "Strict",
         });
+        localStorage.setItem("isLoggedIn", "yes");
         router.push("/");
       }
       router.push("/");
