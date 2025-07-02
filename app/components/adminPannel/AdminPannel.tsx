@@ -212,7 +212,7 @@ function AdminPanel() {
       const result = await response.json();
       console.log("Success response:", result);
       alert("Product added successfully!");
-      router.push(`/categories/${formData.category}`);
+      router.push(`/category/${formData.category}`);
       setFormData({
         name: "",
         category: "",
